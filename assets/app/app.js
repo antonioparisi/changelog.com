@@ -4,6 +4,7 @@ import { u, ajax } from "umbrellajs";
 import autosize from "autosize";
 import Comment from "modules/comment";
 import Cookies from "cookies-js";
+import hljs from 'highlight.js';
 import OnsitePlayer from "modules/onsitePlayer";
 import MiniPlayer from "modules/miniPlayer";
 import LivePlayer from "modules/livePlayer";
@@ -25,6 +26,14 @@ const overlay = new Overlay("#overlay");
 const comment = new Comment();
 
 window.u = u;
+
+// Syntax Highlighting
+['javascript', 'python', 'bash', 'ruby', 'go', 'css'].forEach((langName) => {
+  // Using require() here because import() support hasn't landed in Webpack yet
+  const langModule = require(`highlight.js/lib/languages/${langName}`);
+  hljs.registerLanguage(langName, langModule);
+});
+hljs.initHighlightingOnLoad();
 
 // Hide tooltips when clicking anywhere else
 u(document).on("click", function(event) {
