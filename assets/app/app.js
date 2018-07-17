@@ -2,6 +2,7 @@ import "phoenix_html";
 import Turbolinks from "turbolinks";
 import { u, ajax } from "umbrellajs";
 import autosize from "autosize";
+import Comment from "modules/comment";
 import Cookies from "cookies-js";
 import OnsitePlayer from "modules/onsitePlayer";
 import MiniPlayer from "modules/miniPlayer";
@@ -19,6 +20,9 @@ import parseTime from "../shared/parseTime";
 const player = new OnsitePlayer("#player");
 const live = new LivePlayer(".js-live");
 const overlay = new Overlay("#overlay");
+
+// TODO: Re-work this
+const comment = new Comment();
 
 window.u = u;
 
